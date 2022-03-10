@@ -1,0 +1,27 @@
+{
+  "name": "node-express-api",
+  "version": "1.0.0",
+  "description": "Api rest for webservice project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GB-Titi/NodeJS-Api-Webservice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GB-Titi/NodeJS-Api-Webservice/issues"
+  },
+  "homepage": "https://github.com/GB-Titi/NodeJS-Api-Webservice#readme",
+  "dependencies": {
+    "accepts": "^1.3.8",
+    "cors": "^2.8.5",
+    "expres": "^0.0.5",
+    "express": "^4.17.3",
+    "http": "^0.0.1-security",
+    "http-server": "^14.1.0"
+  }
+}
