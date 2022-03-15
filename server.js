@@ -13,13 +13,27 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Accept-Encoding", "gzip, deflate");
+    res.setHeader("Accept-language", "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3");
+    res.setHeader('Accept', 'application/json');
+    res.setHeader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
+})
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {customCss}));
 
 
 app.get('/api/movies', (req, res) => {
+    // res.status(400).send('BAD REQUEST');
     const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
     const page = req.query.page ? parseInt(req.query.page) : 0;
     movieController.getMovies(pageSize, page).then(data => res.json(data));
+    // res.status(200).json(movies);
 });
 
 app.post('/api/movie', (req, res) => {
