@@ -8,13 +8,13 @@ class movieRepository {
         connect();
     }
 
-    async getmovies() {
-        const movies = await movie.find({});
+    async getMovies(pageSize, page) {
+        const movies = await movie.find({}).limit(pageSize).skip(pageSize * page);;
         console.log('movies:::', movies);
         return movies;
     }
 
-    async createmovie(movie) {
+    async createMovie(movie) {
         let data = {};
         try {
             data = await movie.create(movie);
@@ -24,7 +24,7 @@ class movieRepository {
         return data;
     }
 
-    async updatemovie(movie) {
+    async updateMovie(movie) {
         let data = {};
         try {
             data = await movie.updateOne(movie);
@@ -34,7 +34,7 @@ class movieRepository {
         return data;
     }
 
-    async deletemovie(movieId) {
+    async deleteMovie(movieId) {
         let data = {};
         try {
             data = await movie.deleteOne({_id : movieId});
