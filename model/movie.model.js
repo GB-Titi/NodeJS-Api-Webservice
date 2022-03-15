@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
-const movieschema = new mongoose.Schema({ name: 'string', 
-                description: 'string', 
-                createDate: 'date', 
-                updatedDate: 'date', 
-                createdBy: 'string', 
-                updatedBy: 'string' },
-                { timestamps: { createDate: 'created_at', updatedDate: 'updated_at'}});
+const movieschema = new mongoose.Schema(
+    {
+        name: 'string',
+        description: 'string',
+        date: 'date',
+        note: 'string'
+    },
+);
 
-const movie = mongoose.model('todos', movieschema);
+const movie = mongoose.model('movies', movieschema);
 
 module.exports = {
     movie
