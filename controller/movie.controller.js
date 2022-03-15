@@ -3,24 +3,24 @@ const logger = require('../logger/api.logger');
 
 class TodoController {
 
-    async getmovies() {
-        logger.info('Controller: getmovies')
-        return await movieservice.getmovies();
+    async getMovies() {
+        logger.info('Controller: getMovies')
+        return await movieservice.getMovies();
     }
 
-    async createmovie(movie) {
-        logger.info('Controller: createmovie', movie);
-        return await movieservice.createmovie(movie);
+    async createMovie(movie) {
+        logger.info('Controller: createMovie', movie);
+        return await movieservice.createMovie(movie);
     }
 
-    async updatemovie(movie) {
-        logger.info('Controller: updatemovie', movie);
-        return await movieservice.updatemovie(movie);
+    async updateMovie(movie) {
+        logger.info('Controller: updateMovie', movie);
+        return await movieservice.updateMovie(movie);
     }
 
-    async deletemovie(movieId) {
-        logger.info('Controller: deletemovie', movieId);
-        return await movieservice.deletemovie(movieId);
+    async deleteMovie(movieId) {
+        logger.info('Controller: deleteMovie', movieId);
+        return await movieservice.deleteMovie(movieId);
     }
 }
 module.exports = new TodoController();

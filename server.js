@@ -9,8 +9,6 @@ const customCss = fs.readFileSync((process.cwd()+"/swagger/swagger.css"), 'utf8'
 
 const movieController = require('./controller/movie.controller')
 
-
-
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -19,20 +17,22 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {customCs
 
 
 app.get('/api/movies', (req, res) => {
-    movieController.getmovies().then(data => res.json(data));
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+    const page = req.query.page ? parseInt(req.query.page) : 0;
+    movieController.getMovies(pageSize, page).then(data => res.json(data));
 });
 
 app.post('/api/movie', (req, res) => {
     console.log(req.body);
-    movieController.createmovie(req.body.movie).then(data => res.json(data));
+    movieController.createMovie(req.body.movie).then(data => res.json(data));
 });
 
 app.put('/api/movie', (req, res) => {
-    movieController.updatemovie(req.body.movie).then(data => res.json(data));
+    movieController.updateMovie(req.body.movie).then(data => res.json(data));
 });
 
 app.delete('/api/movie/:id', (req, res) => {
-    movieController.deletemovie(req.params.id).then(data => res.json(data));
+    movieController.deleteMovie(req.params.id).then(data => res.json(data));
 });
 
 app.get('/', (req, res) => {

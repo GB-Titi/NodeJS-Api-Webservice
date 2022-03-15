@@ -4,20 +4,20 @@ class movieservice {
 
     constructor() {}
 
-    async getmovies() {
-        return await movieRepository.getmovies();
+    async getMovies() {
+        return await movieRepository.getMovies();
     }
 
-    async createmovie(movie) {
-        return await movieRepository.createmovie(movie);
+    async createMovie(movie) {
+        return await movieRepository.createMovie(movie);
     }
 
-    async updatemovie(movie) {
-        return await movieRepository.updatemovie(movie);
+    async updateMovie(movie) {
+        return await movieRepository.updateMovie(movie);
     }
 
-    async deletemovie(movieId) {
-        return await movieRepository.deletemovie(movieId);
+    async deleteMovie(movieId) {
+        return await movieRepository.deleteMovie(movieId);
     }
 
 }
