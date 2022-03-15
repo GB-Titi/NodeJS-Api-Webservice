@@ -22,5 +22,15 @@ class TodoController {
         logger.info('Controller: deletemovie', movieId);
         return await movieservice.deletemovie(movieId);
     }
+    
+    async getmovie(movieId){
+        logger.info('Controller: get movie', movieId);
+        return await movieservice.getmovie(movieId);
+    }
+
+    async searchmovie(movieName){
+        logger.info('controller: search movie', movieName);
+        return await movieservice.searchmovie(movieName);
+    }
 }
 module.exports = new TodoController();

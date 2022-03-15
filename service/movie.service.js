@@ -20,6 +20,14 @@ class movieservice {
         return await movieRepository.deletemovie(movieId);
     }
 
+    async getmovie(movieId) {
+        return await movieRepository.getmovie(movieId);
+    }
+
+    async searchmovie(movieName) {
+        return await movieRepository.searchmovie(movieName);
+    }
+
 }
 
 module.exports = new movieservice();

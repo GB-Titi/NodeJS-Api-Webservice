@@ -44,6 +44,28 @@ class movieRepository {
         return {status: `${data.deletedCount > 0 ? true : false}`};
     }
 
+    async getmovie(movieId) {
+        let data = {};
+        try {
+            data = await movie.findById({_id : movieId});
+        }
+        catch(err){
+            logger.error("Error" + err);
+        }
+        return data;
+    }
+
+    async searchmovie(movieName) {
+        let data = {}
+        try {
+            data = await movie.find( {name : movieName});
+        }
+        catch(err){
+            logger.error("error" + err)
+        }
+        return data
+    }
+
 }
 
 module.exports = new movieRepository();
