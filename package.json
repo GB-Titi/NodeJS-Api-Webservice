@@ -16,11 +16,13 @@
   "license": "ISC",
   "homepage": "https://github.com/GB-Titi/NodeJS-Api-Webservice#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.10",
-    "pine": "^1.1.1"
+    "pine": "^1.1.1",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
