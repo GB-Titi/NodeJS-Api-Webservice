@@ -1,5 +1,6 @@
-const { verifySignUp, authJwt } = require("../middlewares");
+const { verifySignUp, authJwt, apiLimiter } = require("../middlewares");
 const controller = require("../controllers/auth.controller");
+
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -14,9 +15,10 @@ module.exports = function(app) {
       verifySignUp.checkDuplicateUsernameOrEmail,
       verifySignUp.checkRolesExisted,
       authJwt.verifyToken,
-      authJwt.isAdmin
+      authJwt.isAdmin,
+      apiLimiter.checkRegister
     ],
     controller.signup
   );
-  app.post("/api/auth/signin", controller.signin);
+  app.post("/api/auth/signin", apiLimiter.checkConnexion, controller.signin);
 };

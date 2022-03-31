@@ -23,7 +23,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         return;
       }
       if (user) {
-        res.status(400).send({ message: "Erreur! L'email' est déjà pris!" });
+        res.status(400).send({ message: "Erreur! L'email est déjà pris!" });
         return;
       }
       next();
