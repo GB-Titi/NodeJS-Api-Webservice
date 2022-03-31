@@ -14,7 +14,7 @@
 #### - Création utilisateur :
 >- Après s'être connecté comme expliqué ci-dessus, il faut récupérer l'accessToken revoyé par l'api.
 >- On effectue une deuxième requête POST sur l'url `http://localhost:8082/api/auth/signup`
->- On met dans le body un utilisteur existant :  
+>- On met dans le body un utilisteur comme :  
 >`
 {  
   "username" : "test_success",
