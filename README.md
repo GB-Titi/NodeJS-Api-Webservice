@@ -34,4 +34,3 @@
 
 >- Edition compte utilisateur
 >- Refresh token
->- Brut Force
