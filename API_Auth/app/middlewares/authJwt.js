@@ -3,6 +3,14 @@ const config = require("../config/auth.config.js");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
+const { TokenExpiredError } = jwt;
+
+const catchError = (err, res) => {
+  if (err instanceof TokenExpiredError) {
+    return res.status(401).send({ message: "Access Token expiré"})
+  }
+  return res.sendStatus(401).send({message : 'Non autorisé'})
+}
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
   if (!token) {
@@ -10,7 +18,7 @@ verifyToken = (req, res, next) => {
   }
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
-      return res.status(401).send({ message: "Non authorisé!" });
+      return catchError(err,res);
     }
     req.userId = decoded.id;
     next();
@@ -70,6 +78,9 @@ isModerator = (req, res, next) => {
     );
   });
 };
+
+
+
 const authJwt = {
   verifyToken,
   isAdmin,
