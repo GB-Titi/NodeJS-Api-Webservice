@@ -50,4 +50,8 @@ Importer le compte admin suivant
 ## Reste à faire :
 
 >- Edition compte utilisateur
->- Essayer de faire correspondre au max avec le contrat d'interface
+>- Essayer de faire correspondre au max avec le contrat d'interface :
+>   - Rajouter une created_date à la création de l'utilisateur + quand on affiche l'utilisateur
+>   - Route vérifier validité du token
+>   - Appeller je refreshToken depuis un call api (voir contrat d'interface)
+>
