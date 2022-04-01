@@ -3,6 +3,23 @@
 ## Marche à suivre :
 *(Il faut utiliser une application comme postman pour effectuer les reqêtes)*
 
+SUR BDD MONGO DB:
+Importer le compte admin suivant 
+>`{
+    "_id": {
+        "$oid": "624571ba5e13c35d429ae463"
+    },
+    "username": "GrosBoule_admin",
+    "email": "titi2@gmail.com",
+    "password": "$2a$08$kFtgbWpAJVZsN28PGxcAbueqnFoSbjsII0iJWvoF.eB52Th58j4hC",
+    "roles": [{
+        "$oid": "624570135e13c35d429ae455"
+    }, {
+        "$oid": "624570135e13c35d429ae457"
+    }],
+    "__v": 1
+}`
+
 #### - Connexion admin :
 >- Requête POST sur l'url `http://localhost:8082/api/auth/signin`
 >- Mettre dans le body de la requête :  
