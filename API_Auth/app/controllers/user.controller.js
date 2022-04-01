@@ -20,6 +20,10 @@ exports.allAccess = (req, res) => {
         data = await User.find({
           _id: req.params.id
         })
-
-    res.send(data);
+    if(Object.entries(data).length === 0){
+      console.log("Pas utilisateur trouvé")
+      res.status(404).send("Aucun utilisateur trouvé pour l'uid")
+    }else{
+      res.send(data);
+    }
   }
