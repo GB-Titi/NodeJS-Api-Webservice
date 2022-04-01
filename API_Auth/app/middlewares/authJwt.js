@@ -7,9 +7,9 @@ const { TokenExpiredError } = jwt;
 
 const catchError = (err, res) => {
   if (err instanceof TokenExpiredError) {
-    return res.status(401).send({ message: "Access Token expiré"})
+    return res.status(401).send({ message: "Token absent ou incorrect"})
   }
-  return res.sendStatus(401).send({message : 'Non autorisé'})
+  return res.sendStatus(401).send({message : 'Il faut être authentifié'})
 }
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
@@ -51,6 +51,10 @@ isAdmin = (req, res, next) => {
     );
   });
 };
+isAdminOrMe = (req, res, next) => {
+  //vérifier si l'utilisateur est admin.
+  //Sinon vérifier le token du client, et si ce token correspond à l'utilisateur recherché. Sinon ça veut dire qu'il a pas le droit.
+}
 isModerator = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {

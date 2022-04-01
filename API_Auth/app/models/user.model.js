@@ -12,7 +12,8 @@ const User = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role"
       }
-    ]
+    ],
+    status: String //voir pour créer un type status qui contiens open ou close
   })
 );
 

@@ -29,13 +29,6 @@ exports.signup = (req, res) => {
             return;
           }
           user.roles = roles.map(role => role._id);
-          user.save(err => {
-            if (err) {
-              res.status(500).send({ message: err });
-              return;
-            }
-            res.send({ message: "L'utilisateur a bien été enregistré!" });
-          });
         }
       );
     } else {
@@ -45,16 +38,31 @@ exports.signup = (req, res) => {
           return;
         }
         user.roles = [role._id];
-        user.save(err => {
-          if (err) {
-            res.status(500).send({ message: err });
-            return;
-          }
-          res.send({ message: "L'utilisateur a bien été enregistré!" });
-        });
       });
     }
-  });
+    let status = req.body.status;
+    if(req.body.status) {
+      switch (status) {
+        case 'open':
+          console.log("Status: open")
+        case 'close':
+          console.log("Status: close")
+          break;
+        default:
+          res.send({ message: "Veuillez rentrer un role valide (open/close), ou bien aucun role. Il sera \"open\" automatiquement" });
+      }
+    } else {
+      status = "open";
+    };
+    user.status = status;
+    user.save(err => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      res.status(201).send({ message: "L'utilisateur a bien été enregistré!" });
+    });
+  })
 };
 exports.signin = (req, res) => {
   User.findOne({
@@ -93,8 +101,8 @@ exports.signin = (req, res) => {
         email: user.email,
         roles: authorities,
         accessToken: token,
-        refreshToken: refreshToken
-
+        refreshToken: refreshToken,
+        status: user.status
       });
     });
 };
@@ -112,7 +120,7 @@ exports.refreshToken = async (req, res) => {
     }
     if (RefreshToken.verifyExpiration(refreshToken)) {
       RefreshToken.findByIdAndRemove(refreshToken._id, { useFindAndModify: false }).exec();
-      
+
       res.status(403).json({
         message: "Refresh token was expired. Please make a new signin request",
       });
