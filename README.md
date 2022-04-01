@@ -33,4 +33,4 @@
 ## Reste à faire :
 
 >- Edition compte utilisateur
->- Refresh token
+>- Essayer de faire correspondre au max avec le contrat d'interface
