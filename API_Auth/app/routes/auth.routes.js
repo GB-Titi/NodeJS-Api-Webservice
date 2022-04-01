@@ -20,6 +20,6 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-  app.post("/api/auth/refreshToken", controller.refreshToken)
+  app.post("/api/auth/refreshToken", apiLimiter.checkRefresh, controller.refreshToken)
   app.post("/api/auth/signin", apiLimiter.checkConnexion, controller.signin);
 };

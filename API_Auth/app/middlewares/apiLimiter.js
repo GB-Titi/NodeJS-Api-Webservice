@@ -18,9 +18,19 @@ const checkConnexion = rateLimit({
       legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   })
 
+  const checkRefresh = rateLimit({
+    windowMs: 5 * 60 * 1000, // 5minutes
+      max: 3, // On limite chaque IP à 3 requêtes par fenêtre, pour les 5minutes définies
+      message:
+          'Trop de tentatives de resfreshToken, réessayez plus tard.',
+      standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+      legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  })
+
   const apiLimiter = {
     checkConnexion,
-    checkRegister
+    checkRegister,
+    checkRefresh
   };
 
 module.exports = apiLimiter;

@@ -1,5 +1,5 @@
 module.exports = {
     secret: "auth-movies-secret-key",
-    jwtExpiration: 3,
-    jwtRefreshExpiration: 500,
+    jwtExpiration: 3600, //secondes
+    jwtRefreshExpiration: 7200, //secondes
   };
