@@ -21,7 +21,7 @@ Importer le compte admin suivant
 }`
 
 #### - Connexion admin :
->- Requête POST sur l'url `http://localhost:8082/api/auth/signin`
+>- Requête POST sur l'url `http://localhost:8082/api/token`
 >- Mettre dans le body de la requête :  
 >`{  
     "username" : "GrosBoule_admin",  
@@ -30,7 +30,7 @@ Importer le compte admin suivant
 
 #### - Création utilisateur :
 >- Après s'être connecté comme expliqué ci-dessus, il faut récupérer l'accessToken revoyé par l'api.
->- On effectue une deuxième requête POST sur l'url `http://localhost:8082/api/auth/signup`
+>- On effectue une deuxième requête POST sur l'url `http://localhost:8082/api/account`
 >- On met dans le body un utilisteur comme :  
 >`
 {  
@@ -43,6 +43,10 @@ Importer le compte admin suivant
 }  
 `
 >- On met dans les headers le token récupéré précédement avec pour clef `x-access-token`
+
+#### - RefreshToken :
+>- Requête POST sur l'url `http://localhost:8082/api/auth/refreshToken`
+>- Mettre dans le body (JSON) le refresh token
 
 
 -----------------
