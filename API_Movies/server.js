@@ -42,15 +42,15 @@ app.get('/api/movie/:id', (req,res) => {
 
 app.post('/api/movie', (req, res) => {
     console.log(req.body);
-    movieController.createMovie(req.body.movie).then(data => res.json(data));
+    movieController.createMovie(req.body.movie).then(data => res.status(200).json(data));
 });
 
 app.put('/api/movie', (req, res) => {
-    movieController.updateMovie(req.body.movie).then(data => res.json(data));
+    movieController.updateMovie(req.body.movie).then(data => res.status(200).json(data));
 });
 
 app.delete('/api/movie/:id', (req, res) => {
-    movieController.deleteMovie(req.params.id).then(data => res.json(data));
+    movieController.deleteMovie(req.params.id).then(data => res.status(200).json(data));
 });
 
 app.get('/api/movie/search/:name', (req, res) => {
