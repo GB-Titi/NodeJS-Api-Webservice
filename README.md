@@ -55,3 +55,9 @@ Importer le compte admin suivant
 >   - Route vérifier validité du token
 >   - Appeller je refreshToken depuis un call api (voir contrat d'interface)
 >
+
+## Pour le prochain projet :
+
+>- Mise en place de mongo Atlas (cloud) pour arrêter de fonctionner en local
+>- Docker si besoin pour l'api d'auth
+>- Petit front pour arrêter de requêter avec postman
