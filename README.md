@@ -48,6 +48,18 @@ Importer le compte admin suivant
 >- Requête POST sur l'url `http://localhost:8082/api/auth/refreshToken`
 >- Mettre dans le body (JSON) le refresh token
 
+### - Recherche d'utilisateur :
+>- Necessite la connexion admin
+>- Requête GET sur l'url `http://localhost:8082/api/account/:id` :id étant l'identifiant de l'utilisateur.
+
+### - Affichage des différents board suivant le role
+
+>- Petite feature en plus permettant de voir le board relatif au role du compte utilisé.
+>- Il faut utiliser le token de connexion récupéré en amont et le faire correspondre à la requete souhaitée :
+>   - `http://localhost:8082/api/test/all` -> Board générique
+>   - `http://localhost:8082/api/test/admin` -> Board Admin
+>   - `http://localhost:8082/api/test/user` -> Board User
+>   - `http://localhost:8082/api/test/mod` -> Board Modérateur
 
 -----------------
 
